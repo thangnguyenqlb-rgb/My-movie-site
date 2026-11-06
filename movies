@@ -748,26 +748,4 @@
             }, 300);
         }
 
-       function playVideoMock() {
-    const movie = moviesData.find(m => m.id === currentSelectedMovieId);
-    const container = document.getElementById('modal-video-container');
-    
-    if (movie && movie.videoUrl) {
-        let embedUrl = movie.videoUrl;
-        
-        // Tự động chuyển link youtube xem thông thường thành link nhúng (embed)
-        if (embedUrl.includes('watch?v=')) {
-            embedUrl = embedUrl.replace('watch?v=', 'embed/');
-        } else if (embedUrl.includes('youtu.be/')) {
-            embedUrl = embedUrl.replace('youtu.be/', 'www.youtube.com/embed/');
-        }
-        
-        // Chèn khung phát video YouTube trực tiếp vào modal
-        container.innerHTML = `
-            <iframe class="w-full h-full" src="${embedUrl}?autoplay=1" title="${movie.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        `;
-        showToast(`Đang phát: ${movie.title}`);
-    } else {
-        showToast('Chưa có link video trực tiếp cho phim này.');
-    }
-}
+     
